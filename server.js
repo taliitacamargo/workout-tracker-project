@@ -22,7 +22,6 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://127.0.0.1/workout", {
 });
 
 app.use(express.static("public"));
-
 app.use(apiRoutes);
 app.use(viewRoutes)
 

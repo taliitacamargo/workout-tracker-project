@@ -1,2 +1,3 @@
 const router = require("express").Router();
-const Workout = require("../models/.js");
+const Workout = require("../models/index");
+
