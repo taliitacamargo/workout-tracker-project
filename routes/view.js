@@ -9,12 +9,12 @@ router.get("/", (req, res) => {
 
 router.get("/stats", (req, res) => {
     // console.log(`one ${res}`);
-    res.sendFile(path.join(__dirname), "../public/stats.html")
+    res.sendFile(path.join(__dirname, "../public/stats.html"));
 })
 
 router.get("/exercise", (req, res) => {
     // console.log(res);
-    res.sendFile(path.join(__dirname), "../public/exercise.html")
+    res.sendFile(path.join(__dirname, "../public/exercise.html"));
 })
 
 module.exports = router;
