@@ -12,6 +12,7 @@ router.get("/api/workouts", (req, res) => {
         },
     ])
         .then((workout) => {
+            // console.log(workout);
             res.json(workout);
         })
         .catch((err) => {
