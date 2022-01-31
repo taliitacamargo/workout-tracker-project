@@ -32,37 +32,46 @@ router.post("/api/workouts", (req, res) => {
 router.put("/api/workouts/:id", (req, res) => {
     Workout.updateOne(req.body, {
         where: {
-            id: req.params.id
-        },
-    })
-        .then(workoutData => {
-            if (!workoutData) {
-                res.status(404).json(err);
-                return;
-            }
-            res.json(workoutData)
+            _id: req.params.id
+        }
+    },
+        {
+            $push: {
+                exercises: req.body
+            },
         })
-        .catch(err => {
-            res.status(400).json(err);
-        });
+    .then((workout) => {
+        res.json(workout)
+    })
+    .catch((err) => {
+        res.json(err);
+    });
 });
 
-// router.delete("/api/workouts/:id", async (req, res) => {
-//     try{
-//     const workoutData = await Workout.destroy({
-//         where: {
-//              id: req.params.id 
-//             }
-//     });
-//     if (!workoutData) {
-//         res.status(404).json(err)
-//         return;
-//     }
-//     res.status(200).json("success");
-// })
-//     .catch(err => {
-//         res.status(500).json(err);
-//     });
+router.get("api/workots/range", (req, res) => {
+    Workout.aggregate([
+        {
+            $addFields: {
+                totalDuration: {
+                    $sum: "$exercises.duration"
+                },
+                totalWeight: {
+                    $sum: "exercises.weight"
+                },
+            },
+        },
+    ])
+        .sort({ day: "desc" })
+        .limit(7)
+        .sort({ day: "asc" })
+        .then(workouts => {
+            res.json(workouts)
+        })
+        .catch((err) => {
+            res.status(400).json(err);
+        })
+});
+
 
 
 module.exports = router;
