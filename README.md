@@ -14,3 +14,10 @@ View the total duration of each workout from the past seven workouts on the stat
 
 
 ![Fitness Tracker](https://user-images.githubusercontent.com/88398240/151731698-a0193ee0-0a98-43b3-a7c2-1c714a264c3e.jpg)
+
+
+Talita Camargo || Upenn BootCamp
+<br>
+Email: taliitacamargo@icloud.com
+<br>
+GitHub: [taliitacamargo](https://github.com/taliitacamargo)
