@@ -13,7 +13,6 @@ router.get("/api/workouts", (req, res) => {
     ])
         .then((workout) => {
             res.json(workout);
-            console.log(workout);
         })
         .catch((err) => {
             res.status(500).json(err);
