@@ -49,15 +49,12 @@ router.put("/api/workouts/:id", (req, res) => {
     });
 });
 
-router.get("api/workouts/range", (req, res) => {
+router.get("/api/workouts/range", (req, res) => {
     Workout.aggregate([
         {
             $addFields: {
                 totalDuration: {
                     $sum: "$exercises.duration"
-                },
-                totalWeight: {
-                    $sum: "exercises.weight"
                 },
             },
         },
